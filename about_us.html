@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Learn ML With Miner</title>
+
+  <!-- Bootstrap CSS + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .team-section {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background-color: #112240;
+      border: 1px solid #00fff7;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 247, 0.2);
+    }
+
+    .team-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00fff7;
+      margin-right: 30px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .team-card:hover .team-img {
+      transform: scale(1.05);
+    }
+
+    .team-content {
+      flex-grow: 1;
+    }
+
+    .team-title {
+      color: #00fff7;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #00fff7;
+      padding-bottom: 10px;
+    }
+
+    .team-role {
+      color: #8892b0;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .team-bio {
+      line-height: 1.8;
+    }
+
+    .footer {
+      margin-top: 50px;
+      color: #8892b0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .btn-back {
+      display: block;
+      width: 150px;
+      margin: 30px auto;
+      padding: 10px;
+      background-color: transparent;
+      color: #00fff7;
+      border: 2px solid #00fff7;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #00fff7;
+      color: #0a192f;
+      box-shadow: 0 0 15px #00fff7;
+    }
+
+    @media (max-width: 768px) {
+      .team-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .team-img {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>About Our Team</h1>
+    <h2>Learn ML With Miner</h2>
+
+    <div class="team-section">
+      <!-- Miner's Card -->
+      <div class="team-card">
+        <img src="rimon (1).jpg" alt="Miner Hossain" class="team-img">
+        <div class="team-content">
+          <h3 class="team-title">Md. Miner Hossain Rimon</h3>
+          <p class="team-role">Founder & Lead Developer</p>
+          <p class="team-bio">
+            Miner is a passionate machine learning enthusiast and educator with expertise in deep learning and AI applications. He created this platform to make ML concepts accessible to learners worldwide.
+          </p>
+        </div>
+      </div>
+
+      <!-- Shamim's Card -->
+      <div class="team-card">
+        <img src="akber.jpg" alt="Shamim Ahmed" class="team-img">
+        <div class="team-content">
+          <h3 class="team-title">Shamim Ahmed</h3>
+          <p class="team-role">Content Developer & Researcher</p>
+          <p class="team-bio">
+            Shamim specializes in creating educational content that bridges the gap between complex ML concepts and beginner understanding. His research focuses on practical applications of AI.
+          </p>
+        </div>
+      </div>
+
+      <!-- Najmul's Card -->
+      <div class="team-card">
+        <img src="jula (1).jpg" alt="Najmul Islam" class="team-img">
+        <div class="team-content">
+          <h3 class="team-title">Najmul Islam</h3>
+          <p class="team-role">Frontend Developer & UI Designer</p>
+          <p class="team-bio">
+            Najmul brings our educational content to life through intuitive interfaces and engaging visual design, ensuring an optimal learning experience.
+          </p>
+        </div>
+      </div>
+
+      <!-- Binoy's Card -->
+      <div class="team-card">
+        <img src="binoy.jpg" alt="Binoy Kumar" class="team-img">
+        <div class="team-content">
+          <h3 class="team-title">Binoy Barman</h3>
+          <p class="team-role">Backend Developer & Data Specialist</p>
+          <p class="team-bio">
+            Binoy handles the technical infrastructure and data management systems that power our learning platform, ensuring smooth operation and scalability.
+          </p>
+        </div>
+      </div>
+
+      <!-- Team Mission -->
+      <div class="team-card">
+        <img src="robot1.avif" alt="Team Mission" class="team-img">
+        <div class="team-content">
+          <h3 class="team-title">Our Mission</h3>
+          <p class="team-bio">
+            We're committed to democratizing AI education, providing high-quality machine learning resources to students and professionals across the world.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-back">Back to Home</a>
+
+    <div class="footer">
+      Created with 💙 by Team Miner | © 2025 Learn ML With Miner
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

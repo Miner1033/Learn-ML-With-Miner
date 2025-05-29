@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ML Quiz - Learn ML With Miner</title>
+
+  <!-- Bootstrap CSS + Font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .quiz-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-left: 5px solid #00fff7;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 247, 0.1);
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+
+    button {
+      background-color: #00fff7;
+      border: none;
+      padding: 12px 25px;
+      font-weight: bold;
+      border-radius: 8px;
+      color: #0a192f;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #00d9d1;
+    }
+
+    .result {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #00ffbb;
+      font-weight: bold;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    .action-buttons button {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    .btn-certificate {
+      background-color: #61dafb;
+    }
+
+    .btn-overview {
+      background-color: #00ffbb;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Machine Learning Quiz</h1>
+
+  <div class="quiz-container">
+    <form id="quizForm">
+
+      <div class="question">
+        <p>1.What type of learning uses labeled data?</p>
+        <label><input type="radio" name="q1" value="a" /> a) Supervised Learning</label>
+        <label><input type="radio" name="q1" value="b" /> b) Unsupervised Learning</label>
+        <label><input type="radio" name="q1" value="c" /> c) Reinforcement Learning</label>
+        <label><input type="radio" name="q1" value="d" /> d) Deep Learning</label>
+      </div>
+
+      <div class="question">
+        <p>2.Which algorithm is used for classification tasks?</p>
+        <label><input type="radio" name="q2" value="a" /> a) Decision Tree</label>
+        <label><input type="radio" name="q2" value="b" /> b) K-Means</label>
+        <label><input type="radio" name="q2" value="c" /> c) PCA</label>
+        <label><input type="radio" name="q2" value="d" /> d) Apriori</label>
+      </div>
+
+      <div class="question">
+        <p>3.What does 'overfitting' mean in ML?</p>
+        <label><input type="radio" name="q3" value="a" /> a) Model is too simple</label>
+        <label><input type="radio" name="q3" value="b" /> b) Model memorizes training data</label>
+        <label><input type="radio" name="q3" value="c" /> c) Model underperforms</label>
+        <label><input type="radio" name="q3" value="d" /> d) Model generalizes well</label>
+      </div>
+
+      <div class="question">
+        <p>4.What is a feature in ML?</p>
+        <label><input type="radio" name="q4" value="a" /> a) A prediction result</label>
+        <label><input type="radio" name="q4" value="b" /> b) Input variable</label>
+        <label><input type="radio" name="q4" value="c" /> c) Output variable</label>
+        <label><input type="radio" name="q4" value="d" /> d) Hidden layer</label>
+      </div>
+
+      <div class="question">
+        <p>5.Which is a performance metric for classification?</p>
+        <label><input type="radio" name="q5" value="a" /> a) MSE</label>
+        <label><input type="radio" name="q5" value="b" /> b) Accuracy</label>
+        <label><input type="radio" name="q5" value="c" /> c) MAE</label>
+        <label><input type="radio" name="q5" value="d" /> d) RMSE</label>
+      </div>
+
+      <div class="question">
+        <p>6.What is ‘unsupervised learning’?</p>
+        <label><input type="radio" name="q6" value="a" /> a) Using reinforcement signals</label>
+        <label><input type="radio" name="q6" value="b" /> b) Using labels to guide learning</label>
+        <label><input type="radio" name="q6" value="c" /> c) Feedback-based learning</label>
+        <label><input type="radio" name="q6" value="d" /> d) Learning without labels</label>
+      </div>
+
+      <div class="question">
+        <p>7.What is the main goal of regression?</p>
+        <label><input type="radio" name="q7" value="a" /> a) Predict continuous value</label>
+        <label><input type="radio" name="q7" value="b" /> b) Predict category</label>
+        <label><input type="radio" name="q7" value="c" /> c) Cluster data</label>
+        <label><input type="radio" name="q7" value="d" /> d) Reduce dimension</label>
+      </div>
+
+      <div class="question">
+        <p>8.What does PCA do?</p>
+        <label><input type="radio" name="q8" value="a" /> a) Dimensionality reduction</label>
+        <label><input type="radio" name="q8" value="b" /> b) Increases accuracy</label>
+        <label><input type="radio" name="q8" value="c" /> c) Optimizes model</label>
+        <label><input type="radio" name="q8" value="d" /> d) Measures error</label>
+      </div>
+
+      <div class="question">
+        <p>9.Which is a clustering algorithm?</p>
+        <label><input type="radio" name="q9" value="a" /> a) Decision Tree</label>
+        <label><input type="radio" name="q9" value="b" /> b) K-Means</label>
+        <label><input type="radio" name="q9" value="c" /> c) Naive Bayes</label>
+        <label><input type="radio" name="q9" value="d" /> d) Logistic Regression</label>
+      </div>
+
+      <div class="question">
+        <p>10.Which library is commonly used for ML in Python?</p>
+        <label><input type="radio" name="q10" value="a" /> a) Pandas</label>
+        <label><input type="radio" name="q10" value="b" /> b) NumPy</label>
+        <label><input type="radio" name="q10" value="c" /> c) scikit-learn</label>
+        <label><input type="radio" name="q10" value="d" /> d) Matplotlib</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <div class="action-buttons" id="actionButtons" style="display: none;">
+      <button class="btn-certificate" onclick="downloadCertificate()">
+        <i class="fas fa-download"></i> Download Certificate
+      </button>
+      <button class="btn-overview" onclick="goToOverview()">
+        <i class="fas fa-home"></i> Go to Overview
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'a',
+        q2: 'a',
+        q3: 'b',
+        q4: 'b',
+        q5: 'b',
+        q6: 'd',
+        q7: 'a',
+        q8: 'a',
+        q9: 'b',
+        q10: 'c'
+      };
+
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const selected = document.querySelector('input[name="q' + i + '"]:checked');
+        if (selected && selected.value === answers['q' + i]) {
+          score++;
+        }
+      }
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = `You scored ${score} out of 10.`;
+
+      document.getElementById('actionButtons').style.display = 'flex';
+    }
+
+    function downloadCertificate() {
+      const link = document.createElement('a');
+      link.href = 'certificate.png'; // Make sure this file is in the same folder
+      link.download = 'ML_Certificate.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function goToOverview() {
+      window.location.href = 'overview.html';
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

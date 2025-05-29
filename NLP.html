@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Natural Language Processing (NLP) - Learn ML With Miner</title>
+
+  <!-- Bootstrap CSS + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 5px solid #00fff7;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 15px rgba(0, 255, 247, 0.1);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-left: 20px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #8892b0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 30px auto;
+    }
+
+    .btn-nav {
+      background-color: transparent;
+      color: #00fff7;
+      border: 2px solid #00fff7;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 10px;
+      padding: 8px 25px;
+      text-decoration: none;
+    }
+
+    .btn-nav:hover {
+      background-color: #00fff7;
+      color: #0a192f;
+      box-shadow: 0 0 15px #00fff7;
+    }
+
+    /* Video section styles */
+    .video-container {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 900px;
+      border: 2px solid #00fff7;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 247, 0.3);
+      background-color: #112240;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .video-caption {
+      margin-top: 15px;
+      color: #8892b0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Natural Language Processing (NLP)</h1>
+
+  <div class="section">
+    <h2>What is NLP?</h2>
+    <p>
+      <strong>English:</strong> Natural Language Processing (NLP) is a branch of artificial intelligence that helps computers understand, interpret, and generate human language. It combines linguistics and machine learning to enable applications like translation, sentiment analysis, and chatbots.
+    </p>
+    <p>
+      <strong>বাংলা:</strong> ন্যাচারাল ল্যাঙ্গুয়েজ প্রসেসিং (NLP) হলো কৃত্রিম বুদ্ধিমত্তার একটি শাখা যা কম্পিউটারকে মানব ভাষা বুঝতে, বিশ্লেষণ করতে এবং তৈরি করতে সাহায্য করে। এটি ভাষাবিজ্ঞান ও মেশিন লার্নিং মিশিয়ে কাজ করে।
+    </p>
+
+    <h2>Common NLP Tasks</h2>
+    <ul>
+      <li><strong>Text Classification (টেক্সট শ্রেণীবিভাগ):</strong> যেমন স্প্যাম ইমেইল চিনতে পারা।</li>
+      <li><strong>Sentiment Analysis (মনোভাব বিশ্লেষণ):</strong> গ্রাহকের মতামত বুঝতে।</li>
+      <li><strong>Machine Translation (মেশিন অনুবাদ):</strong> যেমন Google Translate।</li>
+      <li><strong>Named Entity Recognition (নাম চিহ্নিতকরণ):</strong> যেমন ব্যক্তি, স্থান বা প্রতিষ্ঠান চিনতে পারা।</li>
+      <li><strong>Chatbots and Virtual Assistants (চ্যাটবট ও ভার্চুয়াল অ্যাসিস্ট্যান্ট):</strong> যেমন Siri বা Alexa।</li>
+    </ul>
+
+    <h2>Popular NLP Techniques</h2>
+    <ul>
+      <li>Bag of Words</li>
+      <li>Word Embeddings (e.g., Word2Vec, GloVe)</li>
+      <li>Recurrent Neural Networks (RNN)</li>
+      <li>Transformers (like BERT, GPT)</li>
+    </ul>
+  </div>
+
+  <!-- Video Section -->
+  <div class="video-container">
+    <h4 class="mb-4">🎥 NLP Explained with Video</h4>
+    <div class="video-wrapper">
+      <video controls>
+        <source src="nlp.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="video-caption">Watch how NLP works using real-world examples and visualizations</p>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="deep_learning.html" class="btn-nav">&larr; Previous Page</a>
+    <a href="ANN.html" class="btn-nav">Next Page &rarr;</a>
+  </div>
+
+  <div class="footer">
+    Made with 💙 by Miner | Learn ML With Miner © 2025
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

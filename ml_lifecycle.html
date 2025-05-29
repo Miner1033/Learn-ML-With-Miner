@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Machine Learning Life Cycle - Learn ML With Miner</title>
+
+  <!-- Bootstrap CSS + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 5px solid #00fff7;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 15px rgba(0, 255, 247, 0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h3 {
+      color: #00fff7;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background: #001f33;
+      padding: 15px;
+      border-radius: 8px;
+      color: #00fff7;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #8892b0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .ratio {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 255, 247, 0.2);
+      margin-top: 30px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 30px auto 0 auto;
+    }
+
+    .btn-nav {
+      background-color: transparent;
+      color: #00fff7;
+      border: 2px solid #00fff7;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 10px;
+      padding: 8px 25px;
+      text-decoration: none;
+    }
+
+    .btn-nav:hover {
+      background-color: #00fff7;
+      color: #0a192f;
+      box-shadow: 0 0 15px #00fff7;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Machine Learning Life Cycle</h1>
+
+  <div class="section">
+    <!-- All your content from before -->
+    <h3>1. Data Collection</h3>
+    <p>Collect or load data which you want to train your machine learning model on.</p>
+    <pre>
+import pandas as pd
+
+data = pd.read_csv('data.csv')
+print(data.head())
+    </pre>
+
+    <h3>2. Data Preprocessing</h3>
+    <p>Clean, encode, scale data to prepare it for modeling.</p>
+    <pre>
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+data.fillna(method='ffill', inplace=True)
+
+le = LabelEncoder()
+data['category_encoded'] = le.fit_transform(data['category_column'])
+
+scaler = StandardScaler()
+data[['feature1', 'feature2']] = scaler.fit_transform(data[['feature1', 'feature2']])
+    </pre>
+
+    <h3>3. Model Selection</h3>
+    <p>Choose a suitable ML algorithm for your problem.</p>
+    <pre>
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+    </pre>
+
+    <h3>Train-Test Split Concept</h3>
+    <p>
+      To evaluate a machine learning model fairly, the dataset is split into two parts:<br>
+      <strong>Training set:</strong> Used to train the model.<br>
+      <strong>Testing set:</strong> Used to test the model's performance on unseen data.<br>
+      This helps to check if the model generalizes well beyond the data it has seen.
+    </p>
+    <pre>
+from sklearn.model_selection import train_test_split
+
+# Split dataset into 80% training and 20% testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    </pre>
+
+    <h3>4. Model Training</h3>
+    <p>Train the model on training data.</p>
+    <pre>
+X = data[['feature1', 'feature2']]
+y = data['target']
+
+model.fit(X_train, y_train)
+    </pre>
+
+    <h3>5. Model Testing</h3>
+    <p>Predict using the test data to check model performance.</p>
+    <pre>
+y_pred = model.predict(X_test)
+    </pre>
+
+    <h3>6. Evaluation</h3>
+    <p>Evaluate the model’s performance with metrics like MSE.</p>
+    <pre>
+from sklearn.metrics import mean_squared_error
+
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean Squared Error: {mse}")
+    </pre>
+
+    <h3>7. Deployment</h3>
+    <p>Save your trained model for future use in applications.</p>
+    <pre>
+import joblib
+
+joblib.dump(model, 'trained_model.pkl')
+
+# Load model later for prediction
+loaded_model = joblib.load('trained_model.pkl')
+    </pre>
+
+    <h3>Watch Video Explanation</h3>
+    <div class="ratio ratio-16x9">
+      <iframe 
+        src="ml_model.mp4" 
+        title="ML Life Cycle Explanation" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <a href="ANN.html" class="btn-nav">&larr; Previous Page</a>
+      <a href="scope_in_ml.html" class="btn-nav">Next Page &rarr;</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Made with 💙 by Miner | Learn ML With Miner © 2025
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

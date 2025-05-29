@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supervised Learning - Learn ML With Miner</title>
+
+  <!-- Bootstrap + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding-top: 60px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: #112240;
+      color: #61dafb;
+      border: 1px solid #00fff7;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px #00fff7;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .robot {
+      width: 120px;
+      margin-top: 40px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .footer {
+      margin-top: 50px;
+      color: #8892b0;
+      font-size: 0.9rem;
+    }
+
+    .btn-back {
+      color: #0a192f;
+      background-color: #00fff7;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #61dafb;
+      color: #0a192f;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 30px auto 0;
+    }
+    
+    .btn-nav {
+      background-color: transparent;
+      color: #00fff7;
+      border: 2px solid #00fff7;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 10px;
+      padding: 8px 25px;
+    }
+    
+    .btn-nav:hover {
+      background-color: #00fff7;
+      color: #0a192f;
+      box-shadow: 0 0 15px #00fff7;
+    }
+    
+    /* Video section styles */
+   .video-container {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 1000px;
+  border: 2px solid #00fff7;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 247, 0.3);
+  display: flex;               /* Added for centering */
+  justify-content: center;     /* Center horizontally */
+  align-items: center;        /* Center vertically */
+  background-color: #112240;   /* Matching your theme */
+}
+
+video {
+  width: 100%;
+  max-height: 500px;          /* Set maximum height */
+  object-fit: contain;        /* Maintain aspect ratio without cropping */
+  display: block;
+  margin: 0 auto;             /* Additional centering */
+}
+    
+    .video-caption {
+      margin-top: 15px;
+      color: #8892b0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container section">
+    <h1>Supervised Learning</h1>
+    <h2>Learn ML With Miner</h2>
+
+    <p>
+      <strong>English:</strong> Supervised Learning is a type of machine learning where we train the model using input-output pairs (labeled data). The goal is to make predictions on new, unseen data.<br>
+      <strong>বাংলা:</strong> Supervised Learning হল এমন একটি মেশিন লার্নিং পদ্ধতি যেখানে আমরা মডেলকে প্রশিক্ষণ দেই একটি ডেটাসেট দিয়ে, যেখানে ইনপুট ও সঠিক আউটপুট (label) দেওয়া থাকে। 
+    </p>
+
+    <div class="row mt-5 g-4">
+      <div class="col-md-6">
+        <div class="card p-4 h-100">
+          <h5 class="card-title">🧪 Classification</h5>
+          <p class="card-text text-start">
+            <strong>English:</strong> The goal is to classify the data into categories or classes.<br>
+            <strong>Example:</strong> Spam or Not Spam, Disease or No Disease.<br><br>
+            <strong>বাংলা:</strong> Classification হল এমন একটি Supervised Learning সমস্যা যেখানে আউটপুট একটি ক্যাটেগরি।<br>
+            <strong>উদাহরণ:</strong> একটি ইমেইল স্প্যাম কি না, একজন রোগী অসুস্থ কি না।
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 h-100">
+          <h5 class="card-title">📈 Regression</h5>
+          <p class="card-text text-start">
+            <strong>English:</strong> The output is a continuous number (not a category).<br>
+            <strong>Example:</strong> Predicting house price, temperature, or salary.<br><br>
+            <strong>বাংলা:</strong> Regression এমন একটি Supervised Learning সমস্যা যেখানে আউটপুট একটি সংখ্যা।<br>
+            <strong>উদাহরণ:</strong> একটি বাড়ির দাম কত হবে, আগামীকাল তাপমাত্রা কত হতে পারে।
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="mt-5">🔍 Real Life Use-Cases</h4>
+    <ul class="text-start" style="max-width: 700px; margin: auto;">
+      <li><strong>Classification:</strong> Email spam detection, medical diagnosis, image recognition</li>
+      <li><strong>Regression:</strong> House price prediction, stock price forecasting, weather prediction</li>
+    </ul>
+
+    <!-- Video Section -->
+    <div class="video-container">
+      <h4 class="mt-5 mb-4">🎥 Supervised Learning Explained</h4>
+      <video controls poster="video-poster.jpg"> <!-- Add a poster image if you want -->
+        <source src="supervisdeo_videp.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p class="video-caption">Watch this video to understand supervised learning concepts visually</p>
+    </div>
+
+    <img src="robot1.avif" class="robot" alt="Robot" />
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <a href="ml_fundamental.html" class="btn btn-nav">&larr; Previous Page</a>
+      <a href="unsupervised_learning.html" class="btn btn-nav">Next Page &rarr;</a>
+    </div>
+
+    <div class="footer">
+      Created by Miner | © 2025 Learn ML With Miner
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

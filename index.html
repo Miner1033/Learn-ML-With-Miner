@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Machine Learning With Miner</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <!-- Internal CSS -->
+    <style>
+        :root {
+            --primary-color: #61dafb;
+            --secondary-color: #112240;
+            --accent-color: #00fff7;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            padding-top: 56px; /* For fixed navbar */
+            background-color: #0a192f;
+            color: #61dafb;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #00fff7;
+        }
+        
+        .navbar-brand, .nav-link {
+            color: var(--primary-color) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #0a192f, #112240);
+            color: var(--primary-color);
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 1px solid #00fff7;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            color: #0a192f;
+            font-weight: bold;
+        }
+        
+        .btn-primary:hover {
+            background-color: #00fff7;
+        }
+        
+        .btn-outline-light {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--primary-color);
+            color: #0a192f;
+        }
+        
+        .course-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            border: 1px solid #00fff7;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #00fff7;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: #8892b0;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #00fff7;
+        }
+        
+        .dropdown-menu {
+            background-color: var(--secondary-color);
+            border: 1px solid #00fff7;
+        }
+        
+        .dropdown-item {
+            color: var(--primary-color) !important;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--primary-color);
+            color: #0a192f !important;
+        }
+        
+        .profile-icon {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+        
+        .robot-float {
+            width: 120px;
+            margin: 40px auto;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card {
+            background-color: var(--secondary-color);
+            border: 1px solid #00fff7;
+        }
+        
+        .text-muted {
+            color: #8892b0 !important;
+        }
+        
+        .form-control {
+            background-color: #112240;
+            border: 1px solid #00fff7;
+            color: var(--primary-color);
+        }
+        
+        .form-control:focus {
+            background-color: #112240;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(97, 218, 251, 0.25);
+        }
+
+        /* About Section Styles */
+        #about {
+            background-color: #0a192f;
+            color: #e6f1ff;
+            padding: 80px 0;
+        }
+
+        #about h2 {
+            color: #00fff7;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        #about h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #00fff7;
+        }
+
+        #about h3 {
+            color: var(--primary-color);
+        }
+
+        #about .lead {
+            color: #ccd6f6;
+        }
+
+        #about ul li {
+            color: #ccd6f6;
+        }
+
+        /* Instructors Section */
+        #instructors {
+            background-color: #0a192f;
+        }
+
+        #instructors h2 {
+            color: #00fff7;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        #instructors h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #00fff7;
+        }
+
+        #instructors .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        #instructors .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 255, 247, 0.2) !important;
+        }
+
+        #instructors .card-img-top {
+            height: 320px;
+            object-fit: cover;
+            border-bottom: 2px solid #00fff7;
+        }
+
+        #instructors .card-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        #instructors .card-text {
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+
+        /* Student Feedback Section */
+        #feedback {
+            background-color: #112240;
+            padding: 80px 0;
+        }
+
+        #feedback h2 {
+            color: #00fff7;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        #feedback h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #00fff7;
+        }
+
+        .testimonial-card {
+            background-color: #0a192f;
+            border: 1px solid #00fff7;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 247, 0.2);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 80px;
+            color: #00fff7;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            color: #ccd6f6;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .student-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #00fff7;
+            object-fit: cover;
+        }
+
+        .student-details h5 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .student-details .course-name {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            margin-left: auto;
+            display: flex;
+            gap: 3px;
+        }
+
+        .rating i {
+            color: #ffd700;
+            font-size: 1.1rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(45deg, #0a192f, #112240);
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid #00fff7;
+            border-bottom: 1px solid #00fff7;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00fff7;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #ccd6f6;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #0a192f;
+        }
+
+        #contact h2 {
+            color: #00fff7;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        #contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #00fff7;
+        }
+
+        #contact .card {
+            transition: box-shadow 0.3s ease;
+        }
+
+        #contact .card:hover {
+            box-shadow: 0 5px 15px rgba(0, 255, 247, 0.3) !important;
+        }
+
+        #contact .form-label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        #contact .form-control:focus {
+            border-color: #00fff7;
+            box-shadow: 0 0 0 0.25rem rgba(0, 255, 247, 0.25);
+        }
+
+        /* Carousel custom styles */
+        .carousel-indicators button {
+            background-color: #00fff7;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: #00fff7;
+            border-radius: 50%;
+            padding: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #instructors .col-md-3 {
+                margin-bottom: 20px;
+            }
+        
+            #contact .card-body {
+                padding: 2rem !important;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar with Profile Dropdown -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-lg-none" href="#home"> <!-- Show only on mobile -->
+                <i class="fas fa-robot me-2"></i>ML With Miner
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Left-aligned navigation links -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+
+                <!-- Centered brand (hidden on mobile) -->
+                <a class="navbar-brand mx-lg-auto d-none d-lg-block align-items-center" href="#home">
+                    <i class="fas fa-robot me-2"></i>Learn ML With Miner
+                </a>
+
+                <!-- Right-aligned profile dropdown -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle profile-icon"></i> Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="signin.php"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
+                            <li><a class="dropdown-item" href="signup.php"><i class="fas fa-user-plus me-2"></i>Register</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Home) -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Learn Machine Learning With Miner</h1>
+            <p class="lead fs-4">From beginner to expert - master AI in 2023</p>
+            <div class="mt-4">
+                <a href="#courses" class="btn btn-primary btn-lg px-4 me-2">Explore Courses</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+            </div>
+            <img src="robot1.avif" class="robot-float" alt="Robot">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">About Us</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <img src="robot2.jpg"About ML" class="img-fluid rounded shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Why Choose Us?</h3>
+                    <p class="lead">We make machine learning accessible to everyone through practical, project-based learning.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Industry-experienced instructors</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Hands-on projects with real datasets</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Career support and certification</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Flexible learning schedule</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#courses" class="btn btn-primary px-4">View Courses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Instructors Section -->
+    <section id="instructors" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Meet Our Instructors</h2>
+            <div class="row g-4">
+                <!-- Instructor 1 -->
+                <div class="col-md-3">
+                    <div class="card h-100 text-center shadow-sm">
+                        <img src="rimon (1).jpg" class="card-img-top" alt="Dr. Ahsan Rahman">
+                        <div class="card-body">
+                            <h5 class="card-title">MD.Miner Hossain Rimon</h5>
+                            <p class="card-text">PhD in ML, 10+ years of experience in AI research and development.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instructor 2 -->
+                <div class="col-md-3">
+                    <div class="card h-100 text-center shadow-sm">
+                        <img src="akber.jpg" class="card-img-top" alt="Sara Ahmed">
+                        <div class="card-body">
+                            <h5 class="card-title">Akber Shamim</h5>
+                            <p class="card-text">Data Scientist at Google, passionate about deep learning and NLP.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instructor 3 -->
+                <div class="col-md-3">
+                    <div class="card h-100 text-center shadow-sm">
+                        <img src="jula (1).jpg" class="card-img-top" alt="Imran Kabir">
+                        <div class="card-body">
+                            <h5 class="card-title">Najmul Islam</h5>
+                            <p class="card-text">ML engineer with expertise in computer vision and TensorFlow.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instructor 4 -->
+                <div class="col-md-3">
+                    <div class="card h-100 text-center shadow-sm">
+                        <img src="binoy.jpg" class="card-img-top" alt="Nazifa Chowdhury">
+                        <div class="card-body">
+                            <h5 class="card-title">Binoy Barman</h5>
+                            <p class="card-text">AI instructor and Kaggle expert, focusing on applied ML projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Courses</h2>
+            <div class="row g-4">
+                <!-- Course 1 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="robot3.jpg" class="card-img-top" alt="ML Basics">
+                        <div class="card-body">
+                            <h5 class="card-title">ML Fundamentals</h5>
+                            <p class="card-text">Learn regression, classification, and model evaluation techniques.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">Beginner</span>
+                                <span class="text-muted">8 Weeks</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <a href="course_enroll.html" class="btn btn-primary w-100">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="robot2.jpg" class="card-img-top" alt="Deep Learning">
+                        <div class="card-body">
+                            <h5 class="card-title">Deep Learning</h5>
+                            <p class="card-text">Master neural networks, CNNs, RNNs with TensorFlow and PyTorch.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-warning text-dark">Intermediate</span>
+                                <span class="text-muted">12 Weeks</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <a href="#" class="btn btn-primary w-100">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="robot4.jpg" class="card-img-top" alt="AI Projects">
+                        <div class="card-body">
+                            <h5 class="card-title">AI Project Bootcamp</h5>
+                            <p class="card-text">Build 5 real-world projects for your portfolio.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-danger">Advanced</span>
+                                <span class="text-muted">6 Weeks</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <a href="#" class="btn btn-primary w-100">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-light btn-lg">View All Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Feedback Section -->
+    <section id="feedback" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Students Say</h2>
+            
+            <!-- Stats Section -->
+            <div class="stats-section mb-5">
+                <div class="row">
+                    <div class="col-md-3 stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">Students Enrolled</span>
+                    </div>
+                    <div class="col-md-3 stat-item">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Average Rating</span>
+                    </div>
+                    <div class="col-md-3 stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Completion Rate</span>
+                    </div>
+                    <div class="col-md-3 stat-item">
+                        <span class="stat-number">87%</span>
+                        <span class="stat-label">Job Placement</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Carousel -->
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">
+                                        "The ML Fundamentals course completely changed my career trajectory. The instructors made complex concepts easy to understand, and the hands-on projects gave me real-world experience. I landed a data scientist position within 3 months of completion!"
+                                    </p>
+                                    <div class="student-info">
+                                        <img src="redwan.jpg" alt="Sarah Johnson" class="student-avatar">
+                                        <div class="student-details">
+                                            <h5>Redwan Hossain</h5>
+                                            <p class="course-name">ML Fundamentals Graduate</p>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">
+                                        "I've taken online courses before, but this platform stands out. The curriculum is well-structured, the assignments are challenging yet doable, and the community support is fantastic. Highly recommend!"
+                                    </p>
+                                    <div class="student-info">
+                                        <img src="ashfak.jpg" alt="David Kim" class="student-avatar">
+                                        <div class="student-details">
+                                            <h5>Ashfakuzzam Chy</h5>
+                                            <p class="course-name">Deep Learning Specialist</p>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">
+                                        "The practical approach to learning ML is what sets this course apart. Instead of just theory, we worked on projects that I could showcase to employers. Got my dream job at a tech startup!"
+                                    </p>
+                                    <div class="student-info">
+                                        <img src="sh (2).jpg" alt="Jessica Park" class="student-avatar">
+                                        <div class="student-details">
+                                            <h5>Shondip Dev</h5>
+                                            <p class="course-name">ML Fundamentals</p>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">
+                                        "Transitioning from traditional software development to AI was daunting, but this course made it smooth. The instructors are knowledgeable and always ready to help. Worth every penny!"
+                                    </p>
+                                    <div class="student-info">
+                                        <img src="azhar.jpg" alt="Alex Thompson" class="student-avatar">
+                                        <div class="student-details">
+                                            <h5>Azharul Islam</h5>
+                                            <p class="course-name">AI Project Bootcamp</p>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>ML With Miner</h5>
+                    <p>Making AI education accessible to everyone through practical, project-based learning.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white">Home</a></li>
+                        <li><a href="#courses" class="text-white">Courses</a></li>
+                        <li><a href="about_us.html" class="text-white">About Us</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                    <div class="mt-3">
+                        <p class="mb-1"><i class="fas fa-envelope me-2"></i> minerhossainrimon1033@gmail.com</p>
+                        <p><i class="fas fa-phone me-2"></i> 01615504149</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 ML With Miner. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+                    

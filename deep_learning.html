@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deep Learning - Learn ML With Miner</title>
+
+  <!-- Bootstrap CSS + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 5px solid #00fff7;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 15px rgba(0, 255, 247, 0.1);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-left: 20px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #8892b0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 30px auto;
+    }
+    
+    .btn-nav {
+      background-color: transparent;
+      color: #00fff7;
+      border: 2px solid #00fff7;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 10px;
+      padding: 8px 25px;
+      text-decoration: none;
+    }
+    
+    .btn-nav:hover {
+      background-color: #00fff7;
+      color: #0a192f;
+      box-shadow: 0 0 15px #00fff7;
+    }
+
+    /* Video Section Styles */
+    .video-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #112240;
+      border-radius: 12px;
+      border: 2px solid #00fff7;
+      box-shadow: 0 0 20px rgba(0, 255, 247, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .video-caption {
+      margin-top: 15px;
+      color: #8892b0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Deep Learning</h1>
+
+  <div class="section">
+    <h2>What is Deep Learning?</h2>
+    <p>
+      <strong>English:</strong> Deep Learning is a specialized subset of machine learning that uses neural networks with many layers (called deep neural networks) to automatically learn complex patterns from large amounts of data. It is widely used in tasks such as image recognition, natural language processing, speech recognition, and more.
+    </p>
+    <p>
+      <strong>বাংলা:</strong> ডিপ লার্নিং হলো মেশিন লার্নিং-এর একটি বিশেষ শাখা যা গভীর নিউরাল নেটওয়ার্ক ব্যবহার করে, অর্থাৎ অনেক স্তরের নেটওয়ার্কের মাধ্যমে বড় পরিমাণ ডেটা থেকে জটিল প্যাটার্নগুলো স্বয়ংক্রিয়ভাবে শেখে। এটি ছবি চিনতে পারা, ভাষা বোঝা, কথা চিন্তা করার মতো কাজে ব্যাপকভাবে ব্যবহৃত হয়।
+    </p>
+
+    <!-- Video Section -->
+    <div class="video-container">
+      <h2>Deep Learning Explained</h2>
+      <div class="video-wrapper">
+        <video controls poster="deep_learning_poster.jpg">
+          <source src="deep_learning.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="video-caption">Watch this video to understand how deep neural networks work</p>
+    </div>
+
+    <h2>Detailed Examples of Deep Learning</h2>
+    <ul>
+      <li>
+        <strong>Image Recognition (ছবি চিনতে পারা):</strong><br />
+        Deep learning models like Convolutional Neural Networks (CNNs) can analyze and identify objects in images with high accuracy, used in apps like face recognition, medical imaging diagnosis, and autonomous cars.
+      </li>
+      <li>
+        <strong>Natural Language Processing (ভাষা প্রক্রিয়াকরণ):</strong><br />
+        Recurrent Neural Networks (RNNs) and Transformers help machines understand and generate human language. Examples include virtual assistants, language translation, and sentiment analysis.
+      </li>
+      <li>
+        <strong>Speech Recognition (কথা চিনতে পারা):</strong><br />
+        Deep learning enables converting spoken language into text in applications like Siri, Google Assistant, and automated transcription services.
+      </li>
+      <li>
+        <strong>Autonomous Vehicles (স্বয়ংচালিত গাড়ি):</strong><br />
+        Deep learning processes data from cameras, radars, and sensors to help cars navigate safely without human input.
+      </li>
+      <li>
+        <strong>Recommendation Systems (প্রস্তাবনা সিস্টেম):</strong><br />
+        Platforms like Netflix and YouTube use deep learning to suggest movies or videos based on user preferences.
+      </li>
+      <li>
+        <strong>Healthcare Diagnosis (স্বাস্থ্যসেবা নির্ণয়):</strong><br />
+        Deep learning assists doctors by analyzing medical scans (X-rays, MRIs) to detect diseases like cancer early and accurately.
+      </li>
+      <li>
+        <strong>Art and Creativity (শিল্প ও সৃজনশীলতা):</strong><br />
+        Generative models like GANs create art, music, or even deepfake videos by learning from existing data.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="reinforcement_learning.html" class="btn-nav">&larr; Previous Page</a>
+    <a href="NLP.html" class="btn-nav">Next Page &rarr;</a>
+  </div>
+
+  <div class="footer">
+    Made with 💙 by Miner | Learn ML With Miner © 2025
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unsupervised Learning - Learn ML With Miner</title>
+
+  <!-- Bootstrap + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #0a192f;
+      font-family: 'Roboto Mono', monospace;
+      color: #61dafb;
+      padding-top: 60px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: #112240;
+      color: #61dafb;
+      border: 1px solid #00fff7;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px #00fff7;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .robot {
+      width: 120px;
+      margin-top: 40px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .footer {
+      margin-top: 50px;
+      color: #8892b0;
+      font-size: 0.9rem;
+    }
+
+    .btn-back {
+      color: #0a192f;
+      background-color: #00fff7;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #61dafb;
+      color: #0a192f;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 30px auto 0;
+    }
+    
+    .btn-nav {
+      background-color: transparent;
+      color: #00fff7;
+      border: 2px solid #00fff7;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 10px;
+      padding: 8px 25px;
+    }
+    
+    .btn-nav:hover {
+      background-color: #00fff7;
+      color: #0a192f;
+      box-shadow: 0 0 15px #00fff7;
+    }
+    
+    /* Video section styles */
+    .video-container {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 1000px;
+      border: 2px solid #00fff7;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 247, 0.3);
+      background-color: #112240;
+      text-align: center;
+    }
+    
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+    
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .video-caption {
+      margin-top: 15px;
+      color: #8892b0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container section">
+    <h1>Unsupervised Learning</h1>
+    <h2>Learn ML With Miner</h2>
+
+    <p>
+      <strong>English:</strong> Unsupervised Learning is a type of machine learning where the model learns from data without labels. It finds patterns, groups, or structures within the data.<br>
+      <strong>বাংলা:</strong> Unsupervised Learning এমন একটি মেশিন লার্নিং পদ্ধতি যেখানে ডেটার কোনো নির্দিষ্ট লেবেল থাকে না। মডেল নিজেই ডেটার প্যাটার্ন বা গ্রুপ খুঁজে বের করে।
+    </p>
+
+    <div class="row mt-5 g-4">
+      <div class="col-md-6">
+        <div class="card p-4 h-100">
+          <h5 class="card-title">🔍 Clustering</h5>
+          <p class="card-text text-start">
+            <strong>English:</strong> Clustering is the task of grouping similar data points together.<br>
+            <strong>Example:</strong> Customer segmentation, grouping news articles by topic.<br><br>
+            <strong>বাংলা:</strong> Clustering হল এমন একটি কৌশল যেখানে এক ধরনের ডেটাকে একসাথে গ্রুপ করা হয়।<br>
+            <strong>উদাহরণ:</strong> কাস্টমারদের কেনাকাটার ধরন অনুযায়ী ভাগ করা, খবরের আর্টিকেলগুলো টপিক অনুযায়ী গ্রুপ করা।
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 h-100">
+          <h5 class="card-title">📉 Dimensionality Reduction</h5>
+          <p class="card-text text-start">
+            <strong>English:</strong> This technique reduces the number of features while keeping the important information.<br>
+            <strong>Example:</strong> Visualizing high-dimensional data in 2D or 3D.<br><br>
+            <strong>বাংলা:</strong> Dimensionality Reduction এমন একটি পদ্ধতি যা অনেক গুলা ফিচার থেকে গুরুত্বপূর্ণগুলো রেখে বাকি ফিচার বাদ দেয়।<br>
+            <strong>উদাহরণ:</strong> অনেক গুলা ফিচার বিশিষ্ট ডেটাকে ২D বা ৩D-তে দেখানো।
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="mt-5">🧠 Real Life Use-Cases</h4>
+    <ul class="text-start" style="max-width: 700px; margin: auto;">
+      <li><strong>Clustering:</strong> Customer segmentation, market basket analysis, document grouping</li>
+      <li><strong>Dimensionality Reduction:</strong> Data visualization, noise reduction in images, feature selection</li>
+    </ul>
+
+    <!-- Video Section -->
+    <div class="video-container">
+      <h4 class="mb-4">🎥 Unsupervised Learning Explained</h4>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="unsupervised_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="video-caption">Watch this video to understand unsupervised learning concepts visually</p>
+    </div>
+
+    <img src="robot1.avif" class="robot" alt="Robot" />
+    
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <a href="supervised_learning.html" class="btn btn-nav">&larr; Previous Page</a>
+      <a href="reinforcement_learning.html" class="btn btn-nav">Next Page &rarr;</a>
+    </div>
+
+    <div class="footer">
+      Created by Miner | © 2025 Learn ML With Miner
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll in Course | ML With Miner</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #61dafb;
+            --secondary-color: #112240;
+            --accent-color: #00fff7;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            padding-top: 80px;
+        }
+        
+        .enrollment-card {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 247, 0.1);
+        }
+        
+        .course-header {
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 20px;
+        }
+        
+        .price-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .discount-badge {
+            background-color: #28a745;
+            font-size: 0.8rem;
+        }
+        
+        .btn-enroll {
+            background-color: var(--primary-color);
+            color: #0a192f;
+            font-weight: bold;
+            border: none;
+            padding: 10px 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-enroll:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 247, 0.3);
+        }
+        
+        .form-control {
+            background-color: #112240;
+            border: 1px solid var(--accent-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            background-color: #112240;
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(97, 218, 251, 0.25);
+        }
+        
+        .coupon-success {
+            color: #28a745;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .coupon-error {
+            color: #dc3545;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .enroll-success {
+            display: none;
+            background-color: var(--secondary-color);
+            border: 1px solid #28a745;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .price-reduction {
+            color: #28a745;
+            font-weight: bold;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+            animation: bounce 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 3s linear;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: var(--secondary-color); border-bottom: 1px solid var(--accent-color);">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2"></i>Learn ML With Miner
+            </a>
+        </div>
+    </nav>
+
+    <!-- Enrollment Section -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Success Message (hidden by default) -->
+                <div id="enrollSuccess" class="enroll-success">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Enrollment Successful!</h3>
+                    <p class="lead mb-4">You're now enrolled in Machine Learning Fundamentals</p>
+                    <p>Redirecting to course overview in <span id="countdown">3</span> seconds...</p>
+                    <div class="progress mt-3" style="height: 5px; background-color: #112240;">
+                        <div id="redirectProgress" class="progress-bar"></div>
+                    </div>
+                </div>
+                
+                <!-- Enrollment Form -->
+                <div id="enrollmentFormContainer" class="enrollment-card p-4">
+                    <!-- Course Header -->
+                    <div class="course-header text-center mb-4">
+                        <h2><i class="fas fa-graduation-cap me-2"></i>Machine Learning Fundamentals</h2>
+                        <p class="lead">8-week comprehensive course with hands-on projects</p>
+                    </div>
+                    
+                    <!-- Price and Coupon Section -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h4>Course Price:</h4>
+                            <div class="price-display">
+                                <span id="coursePrice">199tk</span>
+                                <span id="originalPrice" class="text-decoration-line-through text-muted ms-2" style="font-size: 1rem; display: none;">$199</span>
+                                <span id="discountBadge" class="discount-badge badge ms-2" style="display: none;">30% OFF</span>
+                            </div>
+                            <div id="priceReduction" class="price-reduction mt-2">
+                                <i class="fas fa-arrow-down me-1"></i> You saved <span id="savedAmount">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="couponCode" placeholder="Enter coupon code">
+                                <button class="btn btn-outline-light" type="button" id="applyCoupon">Apply</button>
+                            </div>
+                            <div id="couponSuccess" class="coupon-success">
+                                <i class="fas fa-check-circle me-2"></i>Coupon applied successfully! 30% discount activated
+                            </div>
+                            <div id="couponError" class="coupon-error">
+                                <i class="fas fa-times-circle me-2"></i>Invalid coupon code
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enrollment Form -->
+                    <form id="enrollmentForm">
+                        <h4 class="mb-3">Student Information</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        
+                        <h4 class="mb-3">Payment Information</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="expiry" class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" id="expiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="zip" class="form-label">ZIP Code</label>
+                                <input type="text" class="form-control" id="zip" required>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-enroll btn-lg">
+                                <i class="fas fa-lock me-2"></i>Enroll Now for tk<span id="finalPrice">199</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Coupon validation and price calculation
+        document.getElementById('applyCoupon').addEventListener('click', function() {
+            const couponCode = document.getElementById('couponCode').value;
+            const originalPrice = 199;
+            let discount = 0;
+            
+            // Hide previous messages
+            document.getElementById('couponSuccess').style.display = 'none';
+            document.getElementById('couponError').style.display = 'none';
+            
+            // Check for valid coupon
+            if (couponCode === 'RIMON1033') {
+                discount = 0.3; // 30% discount
+                document.getElementById('couponSuccess').style.display = 'block';
+                document.getElementById('discountBadge').style.display = 'inline-block';
+                
+                // Show savings
+                const savedAmount = originalPrice * discount;
+                document.getElementById('savedAmount').textContent = savedAmount.toFixed(0);
+                document.getElementById('priceReduction').style.display = 'block';
+            } else if (couponCode !== '') {
+                document.getElementById('couponError').style.display = 'block';
+                return;
+            }
+            
+            // Calculate and display new price
+            const discountedPrice = originalPrice * (1 - discount);
+            document.getElementById('coursePrice').textContent = discountedPrice.toFixed(0);
+            document.getElementById('finalPrice').textContent = discountedPrice.toFixed(0);
+            
+            // Show original price if discounted
+            if (discount > 0) {
+                document.getElementById('originalPrice').style.display = 'inline';
+            } else {
+                document.getElementById('originalPrice').style.display = 'none';
+                document.getElementById('discountBadge').style.display = 'none';
+                document.getElementById('priceReduction').style.display = 'none';
+            }
+        });
+        
+        // Form submission with guaranteed redirect
+        document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            document.getElementById('enrollmentFormContainer').style.display = 'none';
+            document.getElementById('enrollSuccess').style.display = 'block';
+            
+            // Start progress bar animation
+            document.getElementById('redirectProgress').style.width = '100%';
+            
+            // Countdown timer
+            let seconds = 3;
+            const countdownElement = document.getElementById('countdown');
+            const countdownInterval = setInterval(function() {
+                seconds--;
+                countdownElement.textContent = seconds;
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+            
+            // Guaranteed redirect to overview.html
+            setTimeout(function() {
+                // Try multiple methods to ensure redirect works
+                try {
+                    // Method 1: Standard redirect
+                    window.location.href = 'overview.html';
+                    
+                    // Fallback if method 1 fails
+                    setTimeout(function() {
+                        // Method 2: Alternative path
+                        if (window.location.href.indexOf('overview.html') === -1) {
+                            window.location.pathname = window.location.pathname.replace(/[^/]*$/, '') + 'overview.html';
+                        }
+                        
+                        // Final fallback
+                        setTimeout(function() {
+                            if (window.location.href.indexOf('overview.html') === -1) {
+                                window.location.replace('overview.html');
+                            }
+                        }, 1000);
+                    }, 1000);
+                } catch (e) {
+                    console.error("Redirect error:", e);
+                    window.location = 'overview.html'; // Simplest possible fallback
+                }
+            }, 3000);
+        });
+
+        // Verify overview.html exists on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('overview.html')
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('overview.html not found! Please ensure it exists in the same directory.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking overview.html:', error);
+                });
+        });
+    </script>
+</body>
+</html>
